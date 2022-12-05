@@ -25,18 +25,11 @@ for (idx, input) in inputArray.enumerated() {
         ranges.append(rangeArray)
     }
     
-    let range1 = ranges[0]
-    let range2 = ranges[1]
+    let range1 = ranges[0][0] ... ranges[0][1]
+    let range2 = ranges[1][0] ... ranges[1][1]
     
-    if range1[0] <= range2[0] && range1[1] >= range2[1] {
-        // Range 1 contains all of range 2 sections
+    if range1.overlaps(range2) {
         totalAssignmentPairsContainingAnotherPair += 1
-        continue
-    }
-    
-    if range2[0] <= range1[0] && range2[1] >= range1[1] {
-        totalAssignmentPairsContainingAnotherPair += 1
-        continue
     }
 }
 
